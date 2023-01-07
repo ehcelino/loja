@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="grid gap-3 p-3 border rounded shadow-sm">
+    <div class="row">
+      <div class="col-8">
+        <b>Produto: </b><%= @product.name %>
+        <br />
+        <b>Descrição: </b><%= @product.description %>
+        <br />
+      </div>
+      <div class="col-4">
+        <% if @product.images.present? %>
+          <div class="images-outer">
+            <% @product.images.each do |image| %>
+              <div class="images-inner">
+                <img src="<%= (url_for(image)) %>">
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+
+      </div>
+      <div class="col-6">
+      
+      </div>
+    </div>
+  </div>
+</div>

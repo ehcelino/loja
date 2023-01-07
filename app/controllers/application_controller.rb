@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-
+  before_action :have_shopping_cart
   protect_from_forgery
 
 private
@@ -13,4 +13,12 @@ private
     redirect_to login_url, alert: "Not authorized" if current_user.nil?
   end
   
+  def have_shopping_cart
+    if current_user.nil?
+      @shopping_cart = nil
+    else
+      @shopping_cart = current_user.shopping_cart
+    end
+  end
+
 end

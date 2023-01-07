@@ -1,0 +1,23 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @cart %>
+
+<div>
+  <%= link_to "Edit this cart", edit_cart_path(@cart) %> |
+  <%= link_to "Back to carts", carts_path %>
+
+  <%= button_to "Destroy this cart", @cart, method: :delete %>
+</div>
+
+<% if notice %>
+<p id="notice"><%= notice %></p>
+<% end %>
+<h2>Seu carrinho de compras</h2>
+<ul>
+<% @cart.line_items.each do |item| %>
+  <li><%= item.quantity %> &times;
+  <%= item.product.name %></li>
+<% end %>
+</ul>
+
+<%= link_to "Continuar comprando", root_path %>
