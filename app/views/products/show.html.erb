@@ -1,10 +1,14 @@
 <div class="container">
-  <div class="grid gap-3 p-3 border rounded shadow-sm">
+  <div class="grid gap-3 p-3 border rounded shadow-sm" style="margin-top: 20px; margin-bottom: 20px;">
     <div class="row">
       <div class="col-8">
         <b>Produto: </b><%= @product.name %>
         <br />
         <b>Descrição: </b><%= @product.description %>
+        <br />
+        <b>Valor:</b><%= number_to_currency(@product.price, unit: "R$ ", separator: ",", delimiter: ".") %>
+        <br />
+        
         <br />
       </div>
       <div class="col-4">
@@ -12,7 +16,7 @@
           <div class="images-outer">
             <% @product.images.each do |image| %>
               <div class="images-inner">
-                <img src="<%= (url_for(image)) %>" class="resize-carousel">
+                <img src="<%= (url_for(image)) %>" class="resize-product">
               </div>
             <% end %>
           </div>
@@ -21,10 +25,25 @@
     </div>
     <div class="row">
       <div class="col-6">
-        <%= link_to "Editar", edit_product_path %>
+        <div class="row">
+          <div class="col-3">
+            <%= form_tag line_items_path(product_id: @product) do %>
+            <%= label_tag :quantity, "Quantidade:", class: "form-label" %>
+          </div>
+          <div class="col-4">
+            <%= number_field_tag :quantity, params[:quantity], value: 1, class: "form-control"%>
+          </div>
+          <div class="col-4">
+            <%= submit_tag "Comprar", class: "btn btn-primary mb-3" %>
+            <% end %>
+          </div>
+          <div class="col-1">
+            <%= link_to "Editar", edit_product_path, class: "btn btn-primary mb-3" %>      
+          </div>
+        </div>
       </div>
       <div class="col-6">
-      
+
       </div>
     </div>
   </div>

@@ -28,13 +28,12 @@
               <div class="product">
                 <div style="height: 100px">
                   <% if product.images.present? %>
-                    <span><%= image_tag product.images[0], style: "height: auto; width: auto; max-width: 100px; max-height: 100px;" %></span><br />
+                    <span><%= image_tag product.images[0], class: "resize" %></span><br />
                   <% end %>
                 </div>
                 <div style="height: 80px;">
                   <span><%= product.name %></span><br />
                   <!-- <span><%= product.description %></span><br /> -->
-                  <span><%= product.value %></span><br />
                   <span><%= number_to_currency(product.price, unit: "R$ ", separator: ",", delimiter: ".") %></span><br />
                 </div>
                   <span><%= link_to "Ver produto", product, class: "btn btn-primary mb-3" %></span>
@@ -46,5 +45,7 @@
       <% end %>
     </div>
   </div>
+  <br />
+  <br />
 </div>
 

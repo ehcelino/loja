@@ -8,4 +8,8 @@ class HomeController < ApplicationController
     end
   end
 
+  def admin
+    @products = Product.all
+  end
+
 end
