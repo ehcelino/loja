@@ -4,7 +4,7 @@
       <div class="col">
         <h2>Cadastro de produtos</h2>
       </div>
-      <%= form_with model: @product, method: "post" do |f| %>
+      <%= form_with model: product do |f| %>
         <div class="mb-3">
           <%= f.label 'Produto', class: "form-label" %>
           <%= f.text_field :name, placeholder: 'Nome do produto', class: "form-control" %>

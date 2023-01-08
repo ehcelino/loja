@@ -12,7 +12,7 @@
           <div class="images-outer">
             <% @product.images.each do |image| %>
               <div class="images-inner">
-                <img src="<%= (url_for(image)) %>">
+                <img src="<%= (url_for(image)) %>" class="resize-carousel">
               </div>
             <% end %>
           </div>
@@ -21,7 +21,7 @@
     </div>
     <div class="row">
       <div class="col-6">
-
+        <%= link_to "Editar", edit_product_path %>
       </div>
       <div class="col-6">
       
