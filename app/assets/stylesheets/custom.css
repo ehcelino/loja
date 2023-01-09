@@ -41,6 +41,11 @@
   /* gap: calc( 100% - (140 * 5) + 20); */
 }
 
+.margins {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
 /* Tabela do carrinho */
 
 

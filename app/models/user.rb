@@ -10,6 +10,8 @@ class User < ApplicationRecord
 
   has_one :shopping_cart
 
+  # attr_accessor :admin
+
   def generate_token(column)
     begin
       self[column] = SecureRandom.urlsafe_base64
