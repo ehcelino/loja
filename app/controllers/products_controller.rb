@@ -1,5 +1,7 @@
 class ProductsController < ApplicationController
 
+  rescue_from ActiveRecord::RecordNotFound, with: :invalid_product
+
   def new
     @product = Product.new
   end
@@ -39,6 +41,11 @@ class ProductsController < ApplicationController
 
   def product_params
     params.require(:product).permit(:name, :description, :category_id, :code, :price, images: [])
+  end
+
+  def invalid_product
+    logger.error "Tentativa de acessar produto inválido #{params[:id]}"
+    redirect_to root_url, notice: "Produto inválido ou inexistente."
   end
 
 end

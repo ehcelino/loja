@@ -1,13 +1,13 @@
 # app/helpers/carousel_helper.rb
 
 module CarouselHelper
-  def carousel_for(images)
-    Carousel.new(self, images).html
+  def carousel_for(images, links)
+    Carousel.new(self, images, links).html
   end
 
   class Carousel
-    def initialize(view, images)
-      @view, @images = view, images
+    def initialize(view, images, links)
+      @view, @images, @links = view, images, links
       @uid = SecureRandom.hex(6)
     end
 
@@ -40,17 +40,17 @@ module CarouselHelper
     end
 
     def slides
-      items = images.map.with_index { |image, index| slide_tag(image, index.zero?) }
+      items = images.zip(@links).map.with_index { |(image, link), index| slide_tag(image, link, index.zero?) }
       content_tag(:div, safe_join(items), class: 'carousel-inner')
     end
 
-    def slide_tag(image, is_active)
+    def slide_tag(image, link, is_active)
       options = {
         class: (is_active ? 'carousel-item active' : 'carousel-item'),
           
       }
 
-      content_tag(:div, image_tag(image, class: "d-block w-100 resize-carousel"), options)
+      content_tag(:div, link_to(image_tag(image, class: "d-block w-100 resize-carousel"), link), options)
     end
 
     def controls

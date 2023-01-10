@@ -47,7 +47,14 @@
                 <%= link_to "Controle de produtos", admin_list_path, class:"nav-link active" %>
               </li>
             <% end %>
-
+            <% if !session[:cart_id].nil? %>
+            <li class="nav-item">
+              <a href="<%=cart_path(session[:cart_id]) %>", class="nav-link active"> Carrinho de compras <span class="badge rounded-pill bg-danger">
+                <%= @cart.items_quantity %>
+              </span>
+              </a>
+            </li>
+            <% end %>
           </ul>
         </div>
       </div>
@@ -55,6 +62,7 @@
 
     <%= yield %>
 
+    <footer>
     <nav class="navbar navbar-expand-lg" style="background-color: #efefef;">
       <div class="container-fluid">
         <a class="navbar-brand" href="#"><%= image_tag "logo.png", class: "resize" %></a>
@@ -90,7 +98,7 @@
         </div>
       </div>
     </nav>
-
+    </footer>
 
   </body>
 </html>
