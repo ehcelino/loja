@@ -24,21 +24,6 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav">
-            <% if current_user %>
-              <li class="nav-item">  
-                <a class="nav-link active" href="#">Logged in as <%= current_user.username %>.</a>
-              </li>
-              <li class="nav-item">
-                <%= link_to "Log Out", logout_path, class:"nav-link active" %>
-              </li>
-            <% else %>
-              <li class="nav-item">
-                <%= link_to "Sign Up", signup_path, class:"nav-link active" %>
-              </li>
-              <li class="nav-item">
-                <%= link_to "Log In", login_path, class:"nav-link active" %>
-              </li>
-            <% end %>
             <li class="nav-item">
               <%= link_to "Home", root_path, class:"nav-link active" %>
             </li>
@@ -46,15 +31,43 @@
               <li class="nav-item">
                 <%= link_to "Controle de produtos", admin_list_path, class:"nav-link active" %>
               </li>
+              <li class="nav-item">
+                <%= link_to "Controle de usuários", users_path, class:"nav-link active" %>
+              </li>
+              </ul>
+              <ul class="nav col-md-8 justify-content-end">
+            <% else %>
+            </ul>
+            <ul class="nav col-md-11 justify-content-end">
+            <% end %>
+           
+            
+            <% if current_user %>
+              <li class="nav-item">  
+                <a class="nav-link active" href="#">Bem vindo, <%= current_user.username %></a>
+              </li>
+              <li class="nav-item">
+                <%= link_to "Desconectar", logout_path, class:"nav-link active" %>
+              </li>
+            <% else %>
+              <li class="nav-item">
+                <%= link_to "Inscrever", signup_path, class:"nav-link active" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "Entrar", login_path, class:"nav-link active" %>
+              </li>
             <% end %>
             <% if !session[:cart_id].nil? %>
             <li class="nav-item">
               <a href="<%=cart_path(session[:cart_id]) %>", class="nav-link active"> Carrinho de compras <span class="badge rounded-pill bg-danger">
-                <%= @cart.items_quantity %>
+                <% if !@cart.nil? %>
+                  <%= @cart.items_quantity %>
+                <% end %>
               </span>
               </a>
             </li>
             <% end %>
+
           </ul>
         </div>
       </div>
@@ -62,43 +75,31 @@
 
     <%= yield %>
 
-    <footer>
-    <nav class="navbar navbar-expand-lg" style="background-color: #efefef;">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#"><%= image_tag "logo.png", class: "resize" %></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav">
-            <% if current_user %>
-              <li class="nav-item">  
-                <a class="nav-link active" href="#">Logged in as <%= current_user.username %>.</a>
-              </li>
-              <li class="nav-item">
-                <%= link_to "Log Out", logout_path, class:"nav-link active" %>
-              </li>
-            <% else %>
-              <li class="nav-item">
-                <%= link_to "Sign Up", signup_path, class:"nav-link active" %>
-              </li>
-              <li class="nav-item">
-                <%= link_to "Log In", login_path, class:"nav-link active" %>
-              </li>
-            <% end %>
-            <li class="nav-item">
-              <%= link_to "Home", root_path, class:"nav-link active" %>
-            </li>
-            <li class="nav-item">
-            <% if current_user %>
-              <a class="nav-link active" href="#"><%= current_user.admin? %></a>
-            <% end %>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-    </footer>
+<div class="container">
+  <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+    <p class="col-md-4 mb-0 text-muted">© 2022 by Loja!</p>
+
+    <a href="/" class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+      <%= image_tag "logo.png", class: "resize" %>
+    </a>
+
+    <ul class="nav col-md-4 justify-content-end">
+      <li class="nav-item"><a href="<%= root_path %>" class="nav-link px-2 text-muted">Home</a></li>
+      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Contato</a></li>
+      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Promoções</a></li>
+      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
+      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Sobre</a></li>
+    </ul>
+  </footer>
+</div>
+
+<script>
+  setTimeout(function() {
+    var notice = document.getElementById('notice');
+    notice.style.display = 'none';
+  }, 5000);
+</script>
+
 
   </body>
 </html>

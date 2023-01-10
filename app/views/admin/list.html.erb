@@ -1,5 +1,7 @@
 <div class ="container margins">
-
+    <% flash.each do |key, value| %>
+      <div id="notice" class="alert margins alert-<%= key %>"><%= value %></div>
+    <% end %>
   
   <div class="container" style="width: 80%;">
     <div>

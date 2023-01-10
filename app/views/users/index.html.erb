@@ -1,0 +1,24 @@
+<div class="container">
+  <% flash.each do |key, value| %>
+    <div id="notice" class="alert margins alert-<%= key %>"><%= value %></div>
+  <% end %>
+  <div class ="container margins">
+    <div class="row border rounded shadow" style=" padding-top: 10px;">
+      <div class="container" style="width: 80%;">
+        <% @users.each do |user| %>
+        <div class="border-bottom row">
+          <div class="col-4", style="padding: 20px 0;">
+            <%= user.username %>
+          </div>
+          <div class="col-2", style="padding: 20px 0;">
+            <%= user.email %>
+          </div>
+          <div class="col-1", style="padding: 20px 0;">
+            <%= link_to "Apagar", root_path, class: "btn btn-primary mb-3" %>
+          </div>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

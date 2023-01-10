@@ -10,16 +10,17 @@ def create
     else
       cookies[:auth_token] = user.auth_token
     end
-    redirect_to root_url, :notice => "Logged in!"
+    redirect_to root_url, :notice => "Sessão iniciada com sucesso."
   else
-    flash.now.alert = "Invalid email or password"
+    flash[:danger] = "Usuário ou senha inválidos."
     render "new"
   end
 end
 
 def destroy
   cookies.delete(:auth_token)
-  redirect_to root_url, :notice => "Logged out!"
+  session[:cart_id] = nil
+  redirect_to root_url, :notice => "Sessão encerrada com sucesso."
 end
 
 end

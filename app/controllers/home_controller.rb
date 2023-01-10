@@ -8,9 +8,9 @@ class HomeController < ApplicationController
       @images.push(url_for(product.images[0]))
       @links.push(url_for(product))
     end
-    if session[:cart_id]
-      @cart = Cart.find(session[:cart_id]) 
-    end
+    # if session[:cart_id]
+    #   @cart = Cart.find(session[:cart_id]) 
+    # end
   end
 
   

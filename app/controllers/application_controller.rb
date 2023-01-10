@@ -1,9 +1,16 @@
 class ApplicationController < ActionController::Base
   before_action :have_shopping_cart
+  before_action :my_cart
   protect_from_forgery
 
   def render_404
     render file: "#{Rails.root}/public/404.html", status: 404
+  end
+
+  def my_cart
+    if session[:cart_id]
+      @cart = Cart.find(session[:cart_id]) 
+    end
   end
 
   private

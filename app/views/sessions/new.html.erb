@@ -1,23 +1,26 @@
 <div class="container">
+  <% flash.each do |key, value| %>
+    <div id="notice" class="alert margins alert-<%= key %>"><%= value %></div>
+  <% end %>
   <div class ="container margins">
     <div class="row border rounded shadow" style=" padding-top: 10px;">
       <div class="col">
-        <h2>Log in</h2>
+        <h2>Entrar</h2>
       </div>
       <%= form_tag sessions_path do %>
         <div class="form-group" style="margin-bottom:10px;">
-          <%= label_tag :username %><br />
+          <%= label_tag "Usuário" %><br />
           <%= text_field_tag :username, params[:username], class: "form-control" %>
         </div>
         <div class="form-group" style="margin-bottom:10px;">
-          <%= label_tag :password %><br />
+          <%= label_tag "Senha" %><br />
           <%= password_field_tag :password,nil, class: "form-control" %>
         </div>
         <div class="form-group" style="margin-bottom:10px;">
-          <%= label_tag :remember_me %>
+          <%= label_tag "Lembrar-se de mim" %>
           <%= check_box_tag :remember_me, 1, params[:remember_me] %>
         </div>
-        <div class="actions"><%= submit_tag "Log In", class: "btn btn-primary mb-3" %></div>
+        <div class="actions"><%= submit_tag "Entrar", class: "btn btn-primary mb-3" %></div>
       <% end %>
     </div>
   </div>

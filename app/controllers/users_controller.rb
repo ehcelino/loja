@@ -8,10 +8,16 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
-      redirect_to root_url, notice: "Thank you for signing up!"
+      cookies[:auth_token] = @user.auth_token
+      flash[:notice] = "Logado com sucesso."
+      redirect_to root_url
     else
-      render "new"
+      render :new, status: :unprocessable_entity, content_type: "text/html"
     end
+  end
+
+  def index
+    @users = User.all
   end
 
   private
