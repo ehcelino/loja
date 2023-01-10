@@ -1,14 +1,28 @@
 <div class="container">
+  <% flash.each do |key, value| %>
+    <div id="notice" class="alert margins alert-<%= key %>"><%= value %></div>
+  <% end %>
   <div class="grid gap-3 p-3 border rounded shadow-sm" style="margin-top: 20px; margin-bottom: 20px;">
     <div class="row">
       <div class="col-8">
+        <div>
         <b>Produto: </b><%= @product.name %>
-        <br />
+        </div>
+        <div>
         <b>Descrição: </b><%= @product.description %>
-        <br />
+        </div>
+        <div>
         <b>Valor:</b><%= number_to_currency(@product.price, unit: "R$ ", separator: ",", delimiter: ".") %>
-        <br />
-        
+        </div>
+        <div>
+        <b>Categoria: </b><%= @product.category.category %>
+        </div>
+        <div>
+        <b>Código: </b><%= @product.code %>
+        </div>
+        <div>
+        <b>Em estoque: </b><%= @product.stock %>
+        </div>
         <br />
       </div>
       <div class="col-4">
@@ -40,7 +54,10 @@
         </div>
       </div>
       <div class="col-6">
-
+      <% if current_user && current_user.admin? %>
+        <%= link_to "Editar", edit_product_path(@product), class: "btn btn-primary mb-3" %>
+        <b>Ativo:</b><%= @product.active %>
+      <% end %>
       </div>
     </div>
   </div>

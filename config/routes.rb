@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   root "home#index"
   #resources :admin, only: [:index]
   get 'admin/list', to: 'admin#list'
+  get 'checkout/:id', to: 'carts#checkout', as: 'checkout'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")

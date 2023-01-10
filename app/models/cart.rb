@@ -20,4 +20,8 @@ class Cart < ApplicationRecord
     line_items.to_a.sum { |item| item.quantity }
   end
 
+  def delivery_price
+    items_quantity * 10.0
+  end
+
 end

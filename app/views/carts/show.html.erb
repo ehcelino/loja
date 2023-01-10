@@ -17,9 +17,16 @@
     </tfoot>
     </table>
   </div>
-  <div>
-  <%= button_to "Esvaziar carrinho", cart_url, method: :delete, data: {confirm: "Tem certeza?"}, class: "btn btn-primary mb-3" %>
-  </div>
-  <%= link_to "Continuar comprando", root_path, class: "btn btn-primary mb-3" %>
+  <div class="row" style="width: 40em;">
+    <div class="col-3"></div>
+    <div class="col-3">
+      <%= button_to "Esvaziar carrinho", cart_url, method: :delete, data: {confirm: "Tem certeza?"}, class: "btn btn-danger mb-3" %>
+    </div>
+    <div class="col-3">
+      <%= link_to "Continuar comprando", root_path, class: "btn btn-primary mb-3" %>
+    </div>
+    <div class="col-3">
+      <%= link_to "Finalizar compra", checkout_path(@cart), class: "btn btn-success mb-3" %>
+    </div>
 </div>
 </article>

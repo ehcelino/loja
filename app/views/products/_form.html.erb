@@ -31,6 +31,16 @@
           <%= f.label 'Imagens', class: "form-label" %>
           <%= f.file_field :images, multiple: true, class: "form-control" %>
         </div>
+
+        <div class="mb-3">
+          <%= f.label 'Ativo', class: "form-label" %>
+          <%= check_box_tag :active, params[:active] %>
+        </div>
+        <div class="mb-3">
+          <%= f.label 'Quantidade em estoque', class: "form-label" %>
+          <%= f.number_field :stock, class: "form-control" %>
+        </div>
+
         <div class="mb-3">
           <%= f.submit "Enviar", class: "btn btn-primary mb-3" %>
         </div>

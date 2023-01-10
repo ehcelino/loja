@@ -54,11 +54,8 @@ class CartsController < ApplicationController
   def destroy
     @cart.destroy if @cart.id == session[:cart_id]
     session[:cart_id] = nil
-
-    respond_to do |format|
-      format.html { redirect_to root_url, notice: "Seu carrinho está vazio." }
-      format.json { head :no_content }
-    end
+    flash[:info] = "Seu carrinho está vazio!"
+    redirect_to root_url
   end
 
   def checkout
@@ -78,7 +75,8 @@ class CartsController < ApplicationController
 
     def invalid_cart
       logger.error "Tentativa de acessar carrinho de compras inválido #{params[:id]}"
-      redirect_to root_url, notice: "Carrinho inválido"
+      flash[:danger] = "Carrinho inválido."
+      redirect_to root_url
     end
 
 end

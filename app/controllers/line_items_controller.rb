@@ -26,7 +26,12 @@ class LineItemsController < ApplicationController
     #teste
     if params[:quantity]
       qtt = params[:quantity]
-      @line_item = @cart.add_product(product, qtt.to_i)
+      if qtt.to_i > product.stock
+        flash[:danger] = "Quantidade superior ao estoque."
+        return redirect_to product
+      else
+        @line_item = @cart.add_product(product, qtt.to_i)
+      end
     else
       @line_item = @cart.add_product(product)
     end

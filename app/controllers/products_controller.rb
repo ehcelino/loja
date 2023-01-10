@@ -18,7 +18,7 @@ class ProductsController < ApplicationController
           @product.images.attach(image)
         end
       end
-      return redirect_to product_path(@product.id)
+      return redirect_to admin_list_path
     else
       render :edit
     end
@@ -40,12 +40,13 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:name, :description, :category_id, :code, :price, images: [])
+    params.require(:product).permit(:name, :description, :category_id, :code, :price, :active, :stock, images: [])
   end
 
   def invalid_product
     logger.error "Tentativa de acessar produto inválido #{params[:id]}"
-    redirect_to root_url, notice: "Produto inválido ou inexistente."
+    flash[:danger] = "Produto inválido ou inexistente."
+    redirect_to root_url
   end
 
 end
