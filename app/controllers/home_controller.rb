@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
 
   def index
-    @products = Product.all
+    @products = Product.where(active: 1)
     @images = []
     @links = []
     @products.each do |product|
