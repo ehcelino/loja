@@ -2,6 +2,7 @@ class LineItemsController < ApplicationController
   include CurrentCart
   before_action :set_line_item, only: %i[ show edit update destroy ]
   before_action :set_cart, only: [:create]
+  before_action :authorize
   # GET /line_items or /line_items.json
   def index
     @line_items = LineItem.all
@@ -24,16 +25,29 @@ class LineItemsController < ApplicationController
   def create
     product = Product.find(params[:product_id])
     #teste
-    if params[:quantity]
-      qtt = params[:quantity]
-      if qtt.to_i > product.stock
-        flash[:danger] = "Quantidade superior ao estoque."
-        return redirect_to product
-      else
-        @line_item = @cart.add_product(product, qtt.to_i)
+    product_in_cart = @cart.item_quantity(product.id)
+    qtt_in_cart = 0
+    if !product_in_cart.is_a? Integer
+      product_in_cart.each do |item|
+        if item.product_id == product.id
+          qtt_in_cart = item.quantity
+          return qtt_in_cart
+        end
       end
     else
-      @line_item = @cart.add_product(product)
+      qtt_in_cart = product_in_cart
+    end
+    if params[:quantity]
+      qtt = params[:quantity]
+    else
+      qtt = 1
+    end
+    if qtt.to_i + qtt_in_cart > product.stock
+      flash[:danger] = "Quantidade superior ao estoque."
+      session[:cart_id] = nil if @cart.items_quantity == 0
+      return redirect_to product
+    else
+      @line_item = @cart.add_product(product, qtt.to_i)
     end
     #teste
     # @line_item = @cart.add_product(product)

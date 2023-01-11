@@ -20,6 +20,14 @@ class Cart < ApplicationRecord
     line_items.to_a.sum { |item| item.quantity }
   end
 
+  def item_quantity(product_id)
+    line_items.each do |item|
+      if item.product_id == product_id
+        return item.quantity
+      end
+    end
+  end
+
   def delivery_price
     items_quantity * 10.0
   end
