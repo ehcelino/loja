@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get 'checkout/:id', to: 'carts#checkout', as: 'checkout'
   get 'final', to: 'carts#final', as: 'final'
   get 'promo', to: 'categories#promo', as: 'promo'
+  post 'remove', to: 'carts#remove', as: 'remove'
 
   #resources :admin, only: [:index]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

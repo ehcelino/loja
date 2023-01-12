@@ -62,6 +62,22 @@ class CartsController < ApplicationController
     @cart = Cart.find(params[:id]) 
   end
 
+
+  def remove
+    logger.debug "AQUI AQUI #{params[:cart_id]}"
+    logger.debug "AQUI AQUI #{params[:product_id]}"
+    if @cart.id == session[:cart_id]
+      logger.debug "Cart id correto"
+    else
+      logger.debug "Cart id errado"
+    end
+    logger.debug "CERTO!" if params[:cart_id] == @cart.id
+    product = Product.find(params[:product_id])
+    # cart = Cart.find(params[:cart_id])
+    @cart.remove_product(product)
+    redirect_to cart_path(@cart)
+  end
+
   def final
     @cart.line_items.each do |item|
       @cart.update_quantity(item.product_id, item.quantity)
@@ -70,6 +86,7 @@ class CartsController < ApplicationController
     session[:cart_id] = nil
   end
 
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_cart

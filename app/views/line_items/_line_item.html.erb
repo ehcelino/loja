@@ -8,4 +8,11 @@
   <td>
   <%= number_to_currency(line_item.total_price, unit: "R$ ", separator: ",", delimiter: ".") %>
   </td>
+  <td>
+  <%= form_tag(remove_path, method: "post") do %>
+    <%= hidden_field_tag :cart_id, line_item.cart.id %>
+    <%= hidden_field_tag :product_id, line_item.product.id %>
+    <%= submit_tag "excluir", class: "btn btn-primary" %>
+  <% end %>
+  </td>
 </tr>
