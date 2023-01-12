@@ -10,6 +10,7 @@ Estudo em rails de um site de e-commerce dinâmico
 * Links nos produtos para compra de uma unidade e para a página do produto
 * Compra de mais de uma unidade na página do produto
 * Carrinho de compras dinâmico
+* Exclusão de produtos específicos do carrinho
 * Sistema de gerenciamento de usuários
 * Usuário administrador com capacidade de gerenciar produtos
 * Gerenciamento de produtos com estoque
@@ -18,7 +19,7 @@ Estudo em rails de um site de e-commerce dinâmico
 
 A fazer
 
-* Permitir a exclusão de produtos específicos do carrinho
+
 * Gerar documento de controle de venda
 * Usuários com habilidade de controlar produtos sob o administrador (permissões)
 * Adicionar dados aos produtos (marca, tamanho, peso, garantia, etc.)

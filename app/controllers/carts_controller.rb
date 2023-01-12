@@ -64,17 +64,22 @@ class CartsController < ApplicationController
 
 
   def remove
-    logger.debug "AQUI AQUI #{params[:cart_id]}"
-    logger.debug "AQUI AQUI #{params[:product_id]}"
-    if @cart.id == session[:cart_id]
-      logger.debug "Cart id correto"
-    else
-      logger.debug "Cart id errado"
-    end
-    logger.debug "CERTO!" if params[:cart_id] == @cart.id
-    product = Product.find(params[:product_id])
+    # logger.debug "AQUI AQUI #{params[:cart_id]}"
+    # logger.debug "AQUI AQUI #{params[:product_id]}"
+    # if @cart.id == session[:cart_id]
+    #   logger.debug "Cart id correto"
+    # else
+    #   logger.debug "Cart id errado"
+    # end
+    # logger.debug "CERTO!" if params[:cart_id] == @cart.id
+    # product = Product.find(params[:product_id])
+    product = Product.find(params[:id])
     # cart = Cart.find(params[:cart_id])
     @cart.remove_product(product)
+    if @cart.items_quantity == 0
+      session[:cart_id] = nil 
+      return redirect_to root_url
+    end
     redirect_to cart_path(@cart)
   end
 
