@@ -28,6 +28,15 @@ class Cart < ApplicationRecord
     end
   end
 
+  def update_quantity(product_id, quantity)
+    product = Product.find_by(id: product_id)
+    new_quantity = product.stock - quantity
+    product.stock = new_quantity
+    product.active = 0 if product.stock == 0
+    product.save
+  end
+
+
   def delivery_price
     items_quantity * 10.0
   end

@@ -1,0 +1,15 @@
+<div class="container margins">
+  <% if notice %>
+  <aside id="notice"><%= notice %></aside>
+  <% end %>
+  <h2>Compra concluída com sucesso!</h2>
+  <p>Seus produtos serão entregues via transportadora
+    em até seis dias (<%= 6.days.from_now.strftime("%d/%m/%Y") %>).
+  </p>
+  <p>A nota fiscal desta compra será enviada na parte
+    interna da embalagem.
+  </p>
+  <p>Obrigado e sempre compre com a gente!</p>
+
+  <%= link_to "Voltar á página inicial", root_path, class: "btn btn-success" %>
+</div>

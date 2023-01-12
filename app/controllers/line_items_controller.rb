@@ -63,6 +63,8 @@ class LineItemsController < ApplicationController
     end
   end
 
+  
+
   # PATCH/PUT /line_items/1 or /line_items/1.json
   def update
     respond_to do |format|

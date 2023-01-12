@@ -62,6 +62,14 @@ class CartsController < ApplicationController
     @cart = Cart.find(params[:id]) 
   end
 
+  def final
+    @cart.line_items.each do |item|
+      @cart.update_quantity(item.product_id, item.quantity)
+    end
+    @cart.destroy if @cart.id == session[:cart_id]
+    session[:cart_id] = nil
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_cart
