@@ -21,7 +21,12 @@
     <div class="wrapper" style=" display: flex; justify-content: center;">  
       <% @products.each_with_index do |product, idx| %>
         
-            <div class="border rounded shadow center" style="padding-bottom: 20px; width: 200px;">
+            <div class="border rounded shadow center" style="padding-bottom: 20px; width: 200px; position: relative;">
+              <% if product.promo? %>
+                <div style="position: absolute; top: 10px; right: 10px;">
+                  <%= image_tag "promo.png", class: "resize-promo" %>
+                </div>
+              <% end %>
               <div class="product">
                 <div style="height: 100px">
                   <% if product.images.present? %>

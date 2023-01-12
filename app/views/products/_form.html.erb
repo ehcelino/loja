@@ -40,6 +40,10 @@
           <%= f.label 'Quantidade em estoque', class: "form-label" %>
           <%= f.number_field :stock, class: "form-control" %>
         </div>
+        <div class="mb-3">
+          <%= f.label 'Em promoção', class: "form-label" %>
+          <%= f.check_box :promo %>
+        </div>
 
         <div class="mb-3">
           <%= f.submit "Enviar", class: "btn btn-primary mb-3" %>

@@ -1,24 +1,27 @@
-# README
+###Loja!
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Estudo em rails de um site de e-commerce dinâmico
 
-Things you may want to cover:
+***Características
 
-* Ruby version
+* Interface de loja em formato linhas e colunas
+* Carrossel de imagens de produtos com links na página inicial
+* Categorias com páginas próprias
+* Links nos produtos para compra de uma unidade e para a página do produto
+* Compra de mais de uma unidade na página do produto
+* Carrinho de compras dinâmico
+* Sistema de gerenciamento de usuários
+* Usuário administrador com capacidade de gerenciar produtos
+* Gerenciamento de produtos com estoque
+* Carrinho de compras vinculado à sessão do usuário
 
-* System dependencies
 
-* Configuration
+A fazer
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Permitir a exclusão de produtos específicos do carrinho
+* Gerar documento de controle de venda
+* Usuários com habilidade de controlar produtos sob o administrador (permissões)
+* Adicionar dados aos produtos (marca, tamanho, peso, garantia, etc.)
+* Dados de frete e cálculo
+* Promoções
+* Indicações visuais em produtos em promoção

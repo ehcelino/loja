@@ -5,6 +5,13 @@
   max-height: 100px;
 }
 
+.resize-promo {
+  height: auto; 
+  width: auto; 
+  max-width: 50px; 
+  max-height: 50px;
+}
+
 .resize-carousel {
   height: auto; 
   width: auto; 
