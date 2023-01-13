@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_11_155314) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_13_171831) do
+  create_table "action_text_rich_texts", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "body"
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["record_type", "record_id", "name"], name: "index_action_text_rich_texts_uniqueness", unique: true
+  end
+
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -75,6 +85,28 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_11_155314) do
     t.index ["category_id"], name: "index_products_on_category_id"
   end
 
+  create_table "sale_products", force: :cascade do |t|
+    t.integer "sale_id", null: false
+    t.integer "product_id", null: false
+    t.integer "quantity"
+    t.decimal "value", precision: 10, scale: 2
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_sale_products_on_product_id"
+    t.index ["sale_id"], name: "index_sale_products_on_sale_id"
+  end
+
+  create_table "sales", force: :cascade do |t|
+    t.integer "number"
+    t.integer "user_id", null: false
+    t.integer "quantity"
+    t.decimal "value", precision: 10, scale: 2
+    t.decimal "delivery_price", precision: 10, scale: 2
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_sales_on_user_id"
+  end
+
   create_table "shopping_carts", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -97,5 +129,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_11_155314) do
   add_foreign_key "line_items", "carts"
   add_foreign_key "line_items", "products"
   add_foreign_key "products", "categories"
+  add_foreign_key "sale_products", "products"
+  add_foreign_key "sale_products", "sales"
+  add_foreign_key "sales", "users"
   add_foreign_key "shopping_carts", "users"
 end

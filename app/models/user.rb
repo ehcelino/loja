@@ -10,6 +10,8 @@ class User < ApplicationRecord
 
   has_one :shopping_cart
 
+  has_many :sales
+
   validates :username, presence: {message: "não pode estar em branco."}, length: { in: 4..14, message: 'tem que ter entre 4 a 14 caracteres.' }, uniqueness: {message: 'já em uso.'}
   validates :email, presence: {message: "não pode estar em branco."}, uniqueness: {message: 'já em uso.'}
   validates :password, presence: {message: "não pode estar em branco."}, length: { in: 3..6, message: 'tem que ter entre 3 a 6 caracteres.' }

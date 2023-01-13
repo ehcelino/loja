@@ -1,0 +1,50 @@
+<div class="container margins">
+  <% if notice %>
+    <div id="notice" class="alert alert-primary" role="alert">
+      <%= notice %>
+    </div>
+  <% end %>
+  <div class="container margins">
+    <div>
+      <h3>Venda n°: <%= @sale.number %></h3>
+    </div>
+    <div>
+      Usuário: <%= @sale.user.username %>
+    </div>
+    <div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Produto</th>
+            <th scope="col">Código</th>
+            <th scope="col">Valor unitário</th>
+            <th scope="col">Quantidade</th>
+          </tr>
+        </thead>
+
+        <% @sale.sale_products.each do |product| %>
+          <tr>
+            <td>
+              <%= product.product.name %>
+            </td>
+            <td>
+              <%= product.product.code %>
+            </td>
+            <td>
+              <%= number_to_currency(product.product.price, unit: "R$ ", separator: ",", delimiter: ".") %>
+            </td>
+            <td>
+              <%= product.quantity %>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+    <div>
+      Total de produtos: <%= @sale.quantity %>
+    </div>
+    <div>
+      Valor total da venda (inc. frete): <%= number_to_currency(@sale.value, unit: "R$ ", separator: ",", delimiter: ".") %>
+    </div>
+  </div>
+</div>

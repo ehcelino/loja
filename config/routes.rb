@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :users
   resources :sessions
   resources :categories
+  resources :sales
   
   root "home#index"
   get 'signup', to: 'users#new', as: 'signup'
@@ -15,6 +16,7 @@ Rails.application.routes.draw do
   get 'final', to: 'carts#final', as: 'final'
   get 'promo', to: 'categories#promo', as: 'promo'
   get 'remove/:id', to: 'carts#remove', as: 'remove'
+  get 'admin/sales', to: 'admin#sales'
 
   #resources :admin, only: [:index]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

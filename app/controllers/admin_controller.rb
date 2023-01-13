@@ -7,6 +7,10 @@ class AdminController < ApplicationController
     @products = Product.all
   end
 
+  def sales
+    @sales = Sale.all
+  end
+
   def check_admin
     unless current_user.admin?
       redirect_to root_path, :notice => "Não autorizado."
