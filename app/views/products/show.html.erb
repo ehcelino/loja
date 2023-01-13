@@ -3,6 +3,13 @@
     <div id="notice" class="alert margins alert-<%= key %>"><%= value %></div>
   <% end %>
   <div class="grid gap-3 p-3 border rounded shadow-sm" style="margin-top: 20px; margin-bottom: 20px;">
+    <% if @product.promo? %>
+      <div class="row">
+        <div class="col">
+          <h3>Produto em promoção!</h3>
+        </div>
+      </div>
+    <% end %>
     <div class="row">
       <div class="col-8">
         <div>

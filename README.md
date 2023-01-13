@@ -15,7 +15,7 @@ Estudo em rails de um site de e-commerce dinâmico
 * Usuário administrador com capacidade de gerenciar produtos
 * Gerenciamento de produtos com estoque
 * Carrinho de compras vinculado à sessão do usuário
-
+* Indicações visuais em produtos em promoção
 
 A fazer
 
@@ -24,5 +24,5 @@ A fazer
 * Usuários com habilidade de controlar produtos sob o administrador (permissões)
 * Adicionar dados aos produtos (marca, tamanho, peso, garantia, etc.)
 * Dados de frete e cálculo
-* Promoções
-* Indicações visuais em produtos em promoção
+* Editor HTML para descrição de produtos
+
