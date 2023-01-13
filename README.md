@@ -26,3 +26,6 @@ A fazer
 * Dados de frete e cálculo
 * Editor HTML para descrição de produtos
 
+Fazendo
+
+* gerando controle de venda
