@@ -9,9 +9,22 @@
       <h3>Venda n°: <%= @sale.number %></h3>
     </div>
     <div>
-      Usuário: <%= @sale.user.username %>
+      <% if @sale.user.fullname? %>
+        Cliente: <%= @sale.user.fullname %>
+      <% else %>
+        Usuário: <%= @sale.user.username %>
+      <% end %>
     </div>
     <div>
+      <% if @sale.user.address? %>
+        Endereço: <%= @sale.user.address %>
+        <br />
+        Cidade: <%= @sale.user.city %>
+        <br />
+        CEP: <%= @sale.user.zip %>
+      <% end %>
+    </div>
+    <div style="margin-top:10px;margin-bottom:10px;">
       <table class="table">
         <thead>
           <tr>

@@ -20,8 +20,6 @@ Estudo em rails de um site de e-commerce dinâmico
 
 A fazer
 
-
-* Gerar documento de controle de venda
 * Usuários com habilidade de controlar produtos sob o administrador (permissões)
 * Adicionar dados aos produtos (marca, tamanho, peso, garantia, etc.)
 * Dados de frete e cálculo
