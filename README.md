@@ -16,6 +16,7 @@ Estudo em rails de um site de e-commerce dinâmico
 * Gerenciamento de produtos com estoque
 * Carrinho de compras vinculado à sessão do usuário
 * Indicações visuais em produtos em promoção
+* Relatórios de vendas
 
 A fazer
 
@@ -25,7 +26,3 @@ A fazer
 * Adicionar dados aos produtos (marca, tamanho, peso, garantia, etc.)
 * Dados de frete e cálculo
 * Editor HTML para descrição de produtos
-
-Fazendo
-
-* gerando controle de venda

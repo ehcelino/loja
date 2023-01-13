@@ -19,6 +19,7 @@
             <th scope="col">Código</th>
             <th scope="col">Valor unitário</th>
             <th scope="col">Quantidade</th>
+            <th scope="col">Valor total</th>
           </tr>
         </thead>
 
@@ -35,6 +36,9 @@
             </td>
             <td>
               <%= product.quantity %>
+            </td>
+            <td>
+              <%= number_to_currency((product.product.price * product.quantity), unit: "R$ ", separator: ",", delimiter: ".") %>
             </td>
           </tr>
         <% end %>
