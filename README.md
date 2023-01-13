@@ -24,3 +24,5 @@ A fazer
 * Adicionar dados aos produtos (marca, tamanho, peso, garantia, etc.)
 * Dados de frete e cálculo
 * Editor HTML para descrição de produtos
+
+* Lançando projeto no render
