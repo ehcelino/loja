@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   get 'promo', to: 'categories#promo', as: 'promo'
   get 'remove/:id', to: 'carts#remove', as: 'remove'
   get 'admin/sales', to: 'admin#sales'
+  get 'users/hole', to: 'users#hole'
 
   #resources :admin, only: [:index]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
