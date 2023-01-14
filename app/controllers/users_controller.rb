@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+  rescue_from ActiveRecord::InvalidForeignKey, with: :invalid_fk
+
   def new
     @user = User.new
   end
@@ -24,6 +26,12 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:auth_token, :username, :email, :password, :admin, :fullname, :address, :city, :zip)
+  end
+
+  def invalid_fk
+    logger.error "Tentativa de excluir usuário referenciado na tabela sale_products #{params[:id]}"
+    flash[:danger] = "Erro: usuário referenciado em vendas. Para retirá-lo da listagem, marque-o como inativo."
+    redirect_to admin_list_url
   end
 
 end

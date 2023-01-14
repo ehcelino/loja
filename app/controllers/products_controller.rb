@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
 
   rescue_from ActiveRecord::RecordNotFound, with: :invalid_product
+  rescue_from ActiveRecord::InvalidForeignKey, with: :invalid_fk
 
   def new
     @product = Product.new
@@ -60,6 +61,12 @@ class ProductsController < ApplicationController
     logger.error "Tentativa de acessar produto inválido #{params[:id]}"
     flash[:danger] = "Produto inválido ou inexistente."
     redirect_to root_url
+  end
+
+  def invalid_fk
+    logger.error "Tentativa de excluir produto referenciado na tabela sale_products #{params[:id]}"
+    flash[:danger] = "Erro: produto referenciado em vendas. Para retirá-lo da listagem, marque-o como inativo."
+    redirect_to admin_list_url
   end
 
 end
