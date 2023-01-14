@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :line_items
   resources :carts
-  resources :products
+  resources :products, only: [:show, :update, :edit, :create, :new]
   resources :users
   resources :sessions
   resources :categories
@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   get 'remove/:id', to: 'carts#remove', as: 'remove'
   get 'admin/sales', to: 'admin#sales'
   get 'users/hole', to: 'users#hole'
+  delete '/products/:id', as: 'delete', to: 'products#destroy'
 
   #resources :admin, only: [:index]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
