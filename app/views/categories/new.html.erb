@@ -4,7 +4,7 @@
       <div class="col">
         <h2>Cadastro de categorias</h2>
       </div>
-      <%= form_with model: category do |f| %>
+      <%= form_with model: @category do |f| %>
         <div class="mb-3">
           <%= f.label 'Categoria', class: "form-label" %>
           <%= f.text_field :category, placeholder: 'Categoria', class: "form-control" %>
