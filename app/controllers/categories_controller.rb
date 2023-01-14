@@ -8,4 +8,8 @@ class CategoriesController < ApplicationController
     @products = Product.where(promo: 1)
   end
 
+  def new
+    @category = Category.new
+  end
+
 end
