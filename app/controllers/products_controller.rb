@@ -37,6 +37,13 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
   end
 
+  def delete_image
+    @product = Product.find(params[:id])
+    @product.images[params[:image_index].to_i].purge
+    redirect_to product_path(@product)
+  end
+  
+
   def destroy
     @product = Product.find(params[:id])
     @product.destroy
@@ -46,7 +53,7 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:name, :description, :category_id, :code, :price, :active, :stock, :promo, images: [])
+    params.require(:product).permit(:name, :description, :category_id, :code, :price, :active, :stock, :promo,   images: [])
   end
 
   def invalid_product

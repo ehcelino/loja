@@ -7,34 +7,51 @@
     <div>
       <%= link_to "Novo produto", new_product_path, class: "btn btn-primary mb-3" %>
     </div>
+    <div class="border-bottom row align-items-center">
+      <div class="col-2">
+        Imagem
+      </div>
+      <div class="col-2">
+        Nome
+      </div>
+      <div class="col-2">
+        Estoque
+      </div>
+      <div class="col-2">
+        Valor
+      </div>
+      <div class="col-1">
+        Status
+      </div>
+    </div>
     <% @products.each do |product| %>
-      <div class="border-bottom row">
+      <div class="border-bottom row align-items-center">
         <div class="col-2">
           <%= image_tag product.images[0], class: "resize" %>
         </div>
-        <div class="col-2", style="padding: 30px 0;" >
+        <div class="col-2">
           <%= product.name %>
         </div>
-        <div class="col-2", style="padding: 30px 0;" >
+        <div class="col-2">
           Estoque: <%= product.stock %>
         </div>
-        <div class="col-2", style="padding: 30px 0;" >
+        <div class="col-2">
           <%= number_to_currency(product.price, unit: "R$ ", separator: ",", delimiter: ".") %>
         </div>
-        <div class="col-1", style="padding: 30px 0;" >
+        <div class="col-1">
           <% if product.active? %>
             Ativo
           <% else %>
             Inativo
           <% end %>
         </div>
-        <div class="col-1", style="padding: 20px 0;" >
+        <div class="col-1">
           <%= link_to "Ver", product_path(product), class: "btn btn-primary mb-3" %>
         </div>
-        <div class="col-1", style="padding: 20px 0;" >
+        <div class="col-1">
           <%= link_to "Editar", edit_product_path(product), class: "btn btn-primary mb-3" %>
         </div>
-        <div class="col-1", style="padding: 20px 0;" >
+        <div class="col-1">
           <%= button_to "Excluir", delete_path(product), method: :delete, class: "btn btn-primary mb-3" %>
         </div>
 

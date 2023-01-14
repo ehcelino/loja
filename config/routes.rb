@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   resources :line_items
   resources :carts
-  resources :products, only: [:show, :update, :edit, :create, :new]
+  resources :products, only: [:show, :update, :edit, :create, :new] do
+    member do
+      delete :delete_image
+    end
+  end
   resources :users
   resources :sessions
   resources :categories
