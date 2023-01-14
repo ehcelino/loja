@@ -52,6 +52,10 @@
           <%= f.label "Repita a senha", class: "form-label" %><br />
           <%= f.password_field :password_confirmation, class: "form-control", id: "password_confirmation" %>
         </div>
+        <div class="mb-3">
+          <%= f.label 'Admin', class: "form-label" %>
+          <%= f.check_box :admin %>
+        </div>
         <div class="mb-3"><%= f.submit "Enviar", class: "btn btn-primary mb-3", id: "submit" %></div>
       <% end %>
     </div>
