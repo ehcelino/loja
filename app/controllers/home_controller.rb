@@ -1,6 +1,14 @@
 class HomeController < ApplicationController
 
   def index
+
+    if !cookies[:visited_index]
+      cookies[:visited_index] = { value: true, expires: 1.week.from_now }
+      @show_div = true
+    else
+      @show_div = false
+    end
+    
     @products = Product.where(active: 1)
     @images = []
     @links = []

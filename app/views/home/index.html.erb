@@ -1,17 +1,18 @@
 <div class ="container" style="margin-top: 20px;">
 
-
-<div class="alert alert-warning alert-dismissible fade show" role="alert">
-  <strong>Atenção:</strong> <p>
-  As imagens do site são perdidas após a sessão, e por isso o site não tem a aparência desejada.
-  Pela interface do administrador você pode adicionar outras imagens aos produtos, lembrando-se de apagar os links
-  inválidos de imagens antigas. Você pode também adicionar novos produtos pela interface do administrador.
-  O dropdown de categorias no menu principal não está funcionando no render, ainda não consegui encontrar uma correção.
-  O usuário administrador tem username admin, senha 123.
-  </p>
-  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-</div>
-
+<% if @show_div %>
+  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <strong>Atenção:</strong> <p>
+    As imagens do site são perdidas após a sessão, e por isso o site não tem a aparência desejada.
+    Pela interface do administrador você pode adicionar outras imagens aos produtos, lembrando-se de apagar os links
+    inválidos de imagens antigas. Você pode também adicionar novos produtos pela interface do administrador.
+    O dropdown de categorias no menu principal não está funcionando no render, ainda não consegui encontrar uma correção.
+    O usuário administrador tem username admin, senha 123.
+    Esta mensagem será exibida apenas uma vez.
+    </p>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+<% end %>
 
 <% if notice %>
 <div id="notice" class="alert alert-primary" role="alert">
