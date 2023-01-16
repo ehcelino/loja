@@ -12,4 +12,74 @@
   <p>Obrigado e sempre compre com a gente!</p>
 
   <%= link_to "Voltar á página inicial", root_path, class: "btn btn-success" %>
+
+
+  <div class="container margins border rounded">
+    <div>
+      <h3>Resumo da venda</h3>
+    </div>
+    <div>
+      <h3>N°: <%= @sale.number %></h3>
+    </div>
+    <div>
+      <% if @sale.user.fullname? %>
+        Cliente: <%= @sale.user.fullname %>
+      <% else %>
+        Usuário: <%= @sale.user.username %>
+      <% end %>
+    </div>
+    <div>
+      <% if @sale.user.address? %>
+        Endereço: <%= @sale.user.address %>
+        <br />
+        Cidade: <%= @sale.user.city %>
+        <br />
+        CEP: <%= @sale.user.zip %>
+      <% end %>
+    </div>
+    <div style="margin-top:10px;margin-bottom:10px;" class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Produto</th>
+            <th scope="col">Código</th>
+            <th scope="col">Valor unitário</th>
+            <th scope="col">Quantidade</th>
+            <th scope="col">Valor total</th>
+          </tr>
+        </thead>
+
+        <% @sale.sale_products.each do |product| %>
+          <tr>
+            <td>
+              <%= product.product.name %>
+            </td>
+            <td>
+              <%= product.product.code %>
+            </td>
+            <td>
+              <%= number_to_currency(product.product.price, unit: "R$ ", separator: ",", delimiter: ".") %>
+            </td>
+            <td>
+              <%= product.quantity %>
+            </td>
+            <td>
+              <%= number_to_currency((product.product.price * product.quantity), unit: "R$ ", separator: ",", delimiter: ".") %>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+    <div>
+      Total de produtos: <%= @sale.quantity %>
+    </div>
+    <div>
+      Valor total da venda (inc. frete): <%= number_to_currency(@sale.value, unit: "R$ ", separator: ",", delimiter: ".") %>
+    </div>
+  </div>
+
+
+<%= link_to "Voltar á página inicial", root_path, class: "btn btn-success" %>
+
+
 </div>

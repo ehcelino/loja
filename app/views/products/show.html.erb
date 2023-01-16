@@ -28,7 +28,7 @@
           <br />
         </div>
         <div>
-        <b>Valor:</b><%= number_to_currency(@product.price, unit: "R$ ", separator: ",", delimiter: ".") %>
+        <b>Valor: </b><%= number_to_currency(@product.price, unit: "R$ ", separator: ",", delimiter: ".") %>
         </div>
         <div>
         <b>Categoria: </b><%= @product.category.category %>
