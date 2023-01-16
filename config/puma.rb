@@ -21,7 +21,12 @@ port ENV.fetch("PORT") { 3000 }
 #
 environment ENV.fetch("RAILS_ENV") { "development" }
 
-# TESTE TESTE
+# ATENÇÃO ATENÇÃO ATENÇÃO ATENÇÃO ATENÇÃO ATENÇÃO 
+# ATENÇÃO ATENÇÃO ATENÇÃO ATENÇÃO ATENÇÃO ATENÇÃO 
+# ATENÇÃO ATENÇÃO ATENÇÃO ATENÇÃO ATENÇÃO ATENÇÃO 
+# PARA FUNCIONAR COM O RENDER É NECESSÁRIO COMENTAR
+# A LINHA ABAIXO:
+bind "tcp://192.168.0.111:3000" if ENV.fetch("RUNNING_ENV") == "home"
 # bind "tcp://192.168.0.111:3000"
 # dá problema com o render
 
