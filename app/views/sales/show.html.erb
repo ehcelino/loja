@@ -61,7 +61,7 @@
       Total de produtos: <%= @sale.quantity %>
     </div>
     <div>
-      Valor total da venda (inc. frete): <%= number_to_currency(@sale.value, unit: "R$ ", separator: ",", delimiter: ".") %>
+      <strong>Valor total da venda (inc. frete): <%= number_to_currency(@sale.value, unit: "R$ ", separator: ",", delimiter: ".") %></strong>
     </div>
   </div>
   <%= link_to "Voltar", :back, class: "btn btn-primary mb-3", style: "margin-top:20px;" %>
