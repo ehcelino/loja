@@ -25,3 +25,11 @@ A fazer
 * Adicionar dados aos produtos (marca, tamanho, peso, garantia, etc.)
 * Dados de frete e cálculo
 * Editor HTML para descrição de produtos
+
+ATENÇÃO: Para o puma conseguir servir arquivos é necessário criar uma variável de ambiente no sistema:
+
+RUNNING_ENV='home'
+
+Ou comentar a seguinte linha em config/puma.rb
+
+bind "tcp://192.168.0.111:3000" if ENV.fetch("RUNNING_ENV") == "home"
