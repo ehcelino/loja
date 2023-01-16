@@ -5,6 +5,7 @@ class Product < ApplicationRecord
   has_many :sale_products
   has_many :sales, through: :sale_products
   # attr_accessor :active
+  has_rich_text :content
 
   # def update_quantity(product_id, quantity)
   #   product = Product.find_by(id: product_id)

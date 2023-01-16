@@ -10,7 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_13_213928) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_16_022638) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -61,8 +64,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_13_213928) do
   end
 
   create_table "line_items", force: :cascade do |t|
-    t.integer "product_id", null: false
-    t.integer "cart_id", null: false
+    t.bigint "product_id", null: false
+    t.bigint "cart_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "quantity", default: 1
@@ -77,7 +80,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_13_213928) do
     t.string "value"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "category_id", null: false
+    t.bigint "category_id", null: false
     t.decimal "price", precision: 10, scale: 2
     t.integer "active", default: 1
     t.integer "stock"
@@ -86,8 +89,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_13_213928) do
   end
 
   create_table "sale_products", force: :cascade do |t|
-    t.integer "sale_id", null: false
-    t.integer "product_id", null: false
+    t.bigint "sale_id", null: false
+    t.bigint "product_id", null: false
     t.integer "quantity"
     t.decimal "value", precision: 10, scale: 2
     t.datetime "created_at", null: false
@@ -98,7 +101,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_13_213928) do
 
   create_table "sales", force: :cascade do |t|
     t.integer "number"
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.integer "quantity"
     t.decimal "value", precision: 10, scale: 2
     t.decimal "delivery_price", precision: 10, scale: 2
@@ -110,7 +113,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_13_213928) do
   create_table "shopping_carts", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.index ["user_id"], name: "index_shopping_carts_on_user_id"
   end
 

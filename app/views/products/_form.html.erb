@@ -14,6 +14,10 @@
           <%= f.text_area :description, placeholder: 'Descrição', class: "form-control" %>
         </div>
         <div class="mb-3">
+          <%= f.label 'Conteúdo', class: "form-label" %>
+          <%= f.rich_text_area :content %>
+        </div>
+        <div class="mb-3">
           <%= f.label 'Categoria', class: "form-label" %>
           <div style="margin-bottom:10px;">
             <%= f.collection_select :category_id, Category.all, :id, :category, html_options = {class: "form-select"} %>

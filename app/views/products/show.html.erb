@@ -19,6 +19,15 @@
         <b>Descrição: </b><%= @product.description %>
         </div>
         <div>
+          <br />
+        </div>
+        <div>
+          <%= @product.content %>
+        </div>
+        <div>
+          <br />
+        </div>
+        <div>
         <b>Valor:</b><%= number_to_currency(@product.price, unit: "R$ ", separator: ",", delimiter: ".") %>
         </div>
         <div>
