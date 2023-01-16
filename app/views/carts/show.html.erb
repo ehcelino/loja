@@ -4,7 +4,7 @@
   <aside id="notice"><%= notice %></aside>
   <% end %>
   <h2>Seu carrinho de compras</h2>
-  <div style="width: 40em;">
+  <div class="table-responsive">
     <table class="table table-striped table-hover table-sm">
     <%= render(@cart.line_items) %>
     <tfoot>
@@ -17,15 +17,14 @@
     </tfoot>
     </table>
   </div>
-  <div class="row" style="width: 40em;">
-    <div class="col-3"></div>
-    <div class="col-3">
+  <div class="row">
+    <div class="col-md-2">
       <%= button_to "Esvaziar carrinho", cart_url, method: :delete, data: {confirm: "Tem certeza?"}, class: "btn btn-danger mb-3" %>
     </div>
-    <div class="col-3">
+    <div class="col-md-2">
       <%= link_to "Continuar comprando", root_path, class: "btn btn-primary mb-3" %>
     </div>
-    <div class="col-3">
+    <div class="col-md-2">
       <%= link_to "Finalizar compra", checkout_path(@cart), class: "btn btn-success mb-3" %>
     </div>
 </div>

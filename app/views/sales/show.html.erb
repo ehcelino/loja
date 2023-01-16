@@ -24,7 +24,7 @@
         CEP: <%= @sale.user.zip %>
       <% end %>
     </div>
-    <div style="margin-top:10px;margin-bottom:10px;">
+    <div style="margin-top:10px;margin-bottom:10px;" class="table-responsive">
       <table class="table">
         <thead>
           <tr>
@@ -64,4 +64,5 @@
       Valor total da venda (inc. frete): <%= number_to_currency(@sale.value, unit: "R$ ", separator: ",", delimiter: ".") %>
     </div>
   </div>
+  <%= link_to "Voltar", :back, class: "btn btn-primary mb-3", style: "margin-top:20px;" %>
 </div>

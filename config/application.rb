@@ -21,5 +21,8 @@ module Loja
 
     # teste
     config.active_support.key_generator_hash_digest_class = OpenSSL::Digest::SHA1
+
+    # teste para suprimir o erro do webconsole ativando-o na rede toda
+    config.web_console.whitelisted_ips = '192.168.0.0/16'
   end
 end
