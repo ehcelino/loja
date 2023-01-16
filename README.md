@@ -4,6 +4,7 @@ Estudo em rails de um site de e-commerce dinâmico
 
 ***Características
 
+* Website responsivo, funciona em vários formatos de tela
 * Interface de loja em formato linhas e colunas
 * Carrossel de imagens de produtos com links na página inicial
 * Categorias com páginas próprias
@@ -24,5 +25,3 @@ A fazer
 * Adicionar dados aos produtos (marca, tamanho, peso, garantia, etc.)
 * Dados de frete e cálculo
 * Editor HTML para descrição de produtos
-
-* Lançando projeto no render
