@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_16_022638) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_17_003319) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -89,25 +89,35 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_16_022638) do
   end
 
   create_table "sale_products", force: :cascade do |t|
-    t.bigint "sale_id", null: false
-    t.bigint "product_id", null: false
     t.integer "quantity"
     t.decimal "value", precision: 10, scale: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "sale_id"
+    t.integer "product_id"
+    t.decimal "price", precision: 10, scale: 2
+    t.string "name"
+    t.string "description"
+    t.string "code"
+    t.integer "promo"
     t.index ["product_id"], name: "index_sale_products_on_product_id"
     t.index ["sale_id"], name: "index_sale_products_on_sale_id"
   end
 
   create_table "sales", force: :cascade do |t|
     t.integer "number"
-    t.bigint "user_id", null: false
     t.integer "quantity"
     t.decimal "value", precision: 10, scale: 2
     t.decimal "delivery_price", precision: 10, scale: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_sales_on_user_id"
+    t.string "username"
+    t.string "fullname"
+    t.string "email"
+    t.string "address"
+    t.string "city"
+    t.string "zip"
+    t.datetime "sale_time"
   end
 
   create_table "shopping_carts", force: :cascade do |t|
@@ -136,8 +146,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_16_022638) do
   add_foreign_key "line_items", "carts"
   add_foreign_key "line_items", "products"
   add_foreign_key "products", "categories"
-  add_foreign_key "sale_products", "products"
-  add_foreign_key "sale_products", "sales"
-  add_foreign_key "sales", "users"
+  add_foreign_key "sale_products", "products", on_delete: :nullify
+  add_foreign_key "sale_products", "sales", on_delete: :cascade
   add_foreign_key "shopping_carts", "users"
 end

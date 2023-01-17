@@ -74,18 +74,37 @@ class CartsController < ApplicationController
   end
 
   def final
+    @user = User.find(current_user.id)
     @sale = Sale.new
+    @sale.sale_time = Time.now
     @sale.number = @cart.line_items[0].cart_id
-    @sale.user_id = current_user.id
-    final_value = @cart.delivery_price + @cart.total_price
-    @sale.value = final_value
+    # @sale.user_id = current_user.id
+    @sale.value = @cart.delivery_price + @cart.total_price
+    @sale.delivery_price = @cart.delivery_price
     @sale.quantity = @cart.items_quantity
+    @sale.username = @user.username
+    @sale.fullname = @user.fullname
+    @sale.email = @user.email
+    @sale.address = @user.address
+    @sale.city = @user.city
+    @sale.zip = @user.zip
+    @sale.save
     @cart.line_items.each do |item|
-      @sale.sale_products.push(SaleProduct.create(product: Product.find(item.product_id),
-      quantity: item.quantity, value: Product.find(item.product_id).price * item.quantity)) 
+      @product = Product.find(item.product_id)
+      SaleProduct.create(
+      product_id: item.product_id,
+      quantity: item.quantity, 
+      value: @product.price,
+      name: @product.name,
+      description: @product.description,
+      code: @product.code,
+      promo: @product.promo,
+      sale_id: @sale.id
+      )
+      
       @cart.update_quantity(item.product_id, item.quantity)
     end
-    @sale.save
+    
     @cart.destroy if @cart.id == session[:cart_id]
     session[:cart_id] = nil
   end

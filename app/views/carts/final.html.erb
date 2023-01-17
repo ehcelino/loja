@@ -22,19 +22,19 @@
       <h3>N°: <%= @sale.number %></h3>
     </div>
     <div>
-      <% if @sale.user.fullname? %>
-        Cliente: <%= @sale.user.fullname %>
+      <% if @sale.fullname? %>
+        Cliente: <%= @sale.fullname %>
       <% else %>
-        Usuário: <%= @sale.user.username %>
+        Usuário: <%= @sale.username %>
       <% end %>
     </div>
     <div>
-      <% if @sale.user.address? %>
-        Endereço: <%= @sale.user.address %>
+      <% if @sale.address? %>
+        Endereço: <%= @sale.address %>
         <br />
-        Cidade: <%= @sale.user.city %>
+        Cidade: <%= @sale.city %>
         <br />
-        CEP: <%= @sale.user.zip %>
+        CEP: <%= @sale.zip %>
       <% end %>
     </div>
     <div style="margin-top:10px;margin-bottom:10px;" class="table-responsive">
@@ -52,19 +52,19 @@
         <% @sale.sale_products.each do |product| %>
           <tr>
             <td>
-              <%= product.product.name %>
+              <%= product.name %>
             </td>
             <td>
-              <%= product.product.code %>
+              <%= product.code %>
             </td>
             <td>
-              <%= number_to_currency(product.product.price, unit: "R$ ", separator: ",", delimiter: ".") %>
+              <%= number_to_currency(product.value, unit: "R$ ", separator: ",", delimiter: ".") %>
             </td>
             <td>
               <%= product.quantity %>
             </td>
             <td>
-              <%= number_to_currency((product.product.price * product.quantity), unit: "R$ ", separator: ",", delimiter: ".") %>
+              <%= number_to_currency((product.value * product.quantity), unit: "R$ ", separator: ",", delimiter: ".") %>
             </td>
           </tr>
         <% end %>

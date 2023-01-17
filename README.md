@@ -17,15 +17,16 @@ Estudo em rails de um site de e-commerce dinâmico
 * Gerenciamento de produtos com estoque
 * Carrinho de compras vinculado à sessão do usuário
 * Indicações visuais em produtos em promoção
-* Relatórios de vendas
+* Relatórios de vendas sem vínculos
+* Editor HTML para descrição de produtos
+
 
 A fazer
 
-* Usuários com habilidade de controlar produtos sob o administrador (permissões)
+
 * Adicionar dados aos produtos (marca, tamanho, peso, garantia, etc.)
 * Dados de frete e cálculo
-* Editor HTML para descrição de produtos
-* Criar uma tabela e os vínculos para produtos já vendidos. Do jeito que está, uma alteração no produto reflete em uma venda antiga (por ex. alterar o preço do produto altera também na visualização de venda.) É necessária uma tabela que guarde os produtos da forma como eles foram vendidos (sem vínculos) para que quando for visualizada a venda ela seja fiel.
+
 
 ATENÇÃO: Para o puma conseguir servir arquivos é necessário criar uma variável de ambiente no sistema:
 

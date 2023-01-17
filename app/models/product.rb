@@ -2,8 +2,8 @@ class Product < ApplicationRecord
   has_many_attached :images
   belongs_to :category
   has_many :line_items
-  has_many :sale_products
-  has_many :sales, through: :sale_products
+  # has_many :sale_products
+  # has_many :sales, through: :sale_products
   # attr_accessor :active
   has_rich_text :content
 

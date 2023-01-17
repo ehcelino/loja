@@ -14,7 +14,7 @@ def create
     redirect_to root_url
   else
     flash[:danger] = "Usuário ou senha inválidos."
-    render "new"
+    redirect_to login_path
   end
 end
 
