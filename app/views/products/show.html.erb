@@ -2,7 +2,15 @@
   <% flash.each do |key, value| %>
     <div id="notice" class="alert margins alert-<%= key %>"><%= value %></div>
   <% end %>
-  <div class="grid gap-3 p-3 border rounded shadow-sm" style="margin-top: 20px; margin-bottom: 20px;">
+
+
+  <%
+=begin%>
+ <div class="grid gap-3 p-3 border rounded shadow-sm" style="margin-top: 20px; margin-bottom: 20px;"> 
+<%
+=end%>
+
+  <div class="container border rounded shadow margins p-3">
     <% if @product.promo? %>
       <div class="row">
         <div class="col">
@@ -54,25 +62,26 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-6">
+      <div class="col-sm-6">
         <div class="row">
-          <div class="col-sm-3">
             <%= form_tag line_items_path(product_id: @product) do %>
-            <%= label_tag :quantity, "Quantidade:", class: "form-label" %>
-          </div>
-          <div class="col-sm-4 margins">
+          <div class="form-group" style="margin-bottom:10px;">
+            <%= label_tag :quantity, "Quantidade", class: "form-label" %>
             <%= number_field_tag :quantity, params[:quantity], value: 1, class: "form-control", style: "width: 4em;" %>
           </div>
-          <div class="col-sm-4 margins">
-            <%= submit_tag "Comprar", class: "btn btn-primary mb-3" %>
+            <div class="actions"><%= submit_tag "Comprar", class: "btn btn-primary mb-3" %></div>
             <% end %>
-          </div>
         </div>
       </div>
       <div class="col-sm-6">
       <% if current_user && current_user.admin? %>
         <%= link_to "Editar", edit_product_path(@product), class: "btn btn-primary mb-3" %>
-        <b>Ativo:</b><%= @product.active %>
+        <b>Ativo: </b>
+        <% if @product.active? %>
+          <b>Sim</b>
+        <% else %>
+          <b>Não</b>
+        <% end %>
       <% end %>
       </div>
     </div>

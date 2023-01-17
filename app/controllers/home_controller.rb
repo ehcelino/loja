@@ -12,10 +12,12 @@ class HomeController < ApplicationController
     @products = Product.where(active: 1)
     @images = []
     @links = []
+    @info = []
     @products.each do |product|
       if product.active?
         @images.push(url_for(product.images[0]))
         @links.push(url_for(product))
+        @info.push(product.name)
       end
     end
     # if session[:cart_id]
