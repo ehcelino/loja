@@ -35,8 +35,14 @@
   </div>
   <div class="container col-8" style="width: 500px;">
 
-     <%= render 'carousel', images: @images, links: @links, info: @info %> 
+     <%
+=begin%>
+ <%= render 'carousel', images: @images, links: @links, info: @info %>  
+<%
+=end%>
   
+  <%= render 'carousel_fixed' %>
+
   </div>
   <div class="col-2">
 
