@@ -1,0 +1,40 @@
+<div class="table-responsive">
+            <table class="table table-striped table-hover table-sm">
+              <thead>
+                <tr>
+                  <th scope="col">Imagem</th>
+                  <th scope="col">Nome</th>
+                  <th scope="col">Estoque</th>
+                  <th scope="col">Valor</th>
+                  <th scope="col">Status</th>
+                  
+                </tr>
+              </thead>
+              <% nostock.each do |product| %>
+                <tr>
+                  <td>
+                    <% if product.images.present? %>
+                      <%= image_tag product.images[0], class: "resize" %>
+                    <% end %>
+                  </td>
+                  <td>
+                    <%= product.name %>
+                  </td>
+                  <td>
+                    <%= product.stock %>
+                  </td>
+                  <td>
+                    <%= number_to_currency(product.price, unit: "R$ ", separator: ",", delimiter: ".") %>
+                  </td>
+                  <td>
+                    <% if product.active? %>
+                      Ativo
+                    <% else %>
+                      Inativo
+                    <% end %>
+                  </td>
+                  
+                </tr>
+              <% end %>
+            </table>
+          </div>

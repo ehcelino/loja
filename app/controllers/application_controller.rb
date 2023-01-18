@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
 
   def authorize
     if current_user.nil?
-      flash[:danger] = "Não autorizado."
+      flash[:danger] = "Faça login para continuar."
       redirect_to login_url
     end
   end
