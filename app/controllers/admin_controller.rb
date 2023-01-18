@@ -11,11 +11,13 @@ class AdminController < ApplicationController
     @sales = Sale.all
   end
 
-  def check_admin
-    unless current_user.admin?
-      flash[:danger] = "Não autorizado."
-      redirect_to root_path
-    end
-  end
+  private
+
+  # def check_admin
+  #   unless current_user.admin?
+  #     flash[:danger] = "Não autorizado."
+  #     redirect_to root_path
+  #   end
+  # end
 
 end

@@ -9,7 +9,7 @@ class HomeController < ApplicationController
       @show_div = false
     end
     
-    @products = Product.where(active: 1)
+    @products = Product.active
     @images = []
     @links = []
     @info = []

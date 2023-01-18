@@ -34,6 +34,15 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def check_admin
+    unless !current_user.nil? && current_user.admin?
+      flash[:danger] = "Não autorizado."
+      redirect_to root_path
+    end
+  end
+
+
+
   # def have_shopping_cart
   #   if current_user.nil?
   #     @shopping_cart = nil

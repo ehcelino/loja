@@ -7,6 +7,8 @@ class Product < ApplicationRecord
   # attr_accessor :active
   has_rich_text :content
 
+  scope :active, -> { where(active: 1) }
+  scope :nostock, -> { where(stock: 0) }
   # def update_quantity(product_id, quantity)
   #   product = Product.find_by(id: product_id)
   #   new_quantity = product.stock - quantity
@@ -14,5 +16,6 @@ class Product < ApplicationRecord
   #   product.active = 0 if product.stock == 0
   #   product.save
   # end
+
 
 end

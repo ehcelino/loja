@@ -26,6 +26,7 @@ A fazer
 
 * Adicionar dados aos produtos (marca, tamanho, peso, garantia, etc.)
 * Dados de frete e cálculo
+* usuário não pode apagar a si próprio
 
 
 ATENÇÃO: Para o puma conseguir servir arquivos é necessário criar uma variável de ambiente no sistema:
