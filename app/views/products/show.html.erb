@@ -3,6 +3,7 @@
   <% end %>
 
 
+
   <%
 =begin%>
  <div class="grid gap-3 p-3 border rounded shadow-sm" style="margin-top: 20px; margin-bottom: 20px;"> 
@@ -18,12 +19,20 @@
       </div>
     <% end %>
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-sm-7">
         <div>
-        <b>Produto: </b><%= @product.name %>
+          <% if @product.images.present? %>
+            <div class="images-outer">
+              <% @product.images.each do |image| %>
+                <div class="images-inner">
+                  <img src="<%= (url_for(image)) %>" class="resize-product">
+                </div>
+              <% end %>
+            </div>
+          <% end %>
         </div>
         <div>
-        <b>Descrição: </b><%= @product.description %>
+        <strong><%= @product.description %></strong>
         </div>
         <div>
           <br />
@@ -34,42 +43,43 @@
         <div>
           <br />
         </div>
-        <div>
-        <b>Valor: </b><%= number_to_currency(@product.price, unit: "R$ ", separator: ",", delimiter: ".") %>
-        </div>
-        <div>
-        <b>Categoria: </b><%= @product.category.category %>
-        </div>
-        <div>
-        <b>Código: </b><%= @product.code %>
-        </div>
-        <div>
-        <b>Em estoque: </b><%= @product.stock %>
-        </div>
+        
         <br />
       </div>
-      <div class="col-sm-4">
-        <% if @product.images.present? %>
-          <div class="images-outer">
-            <% @product.images.each do |image| %>
-              <div class="images-inner">
-                <img src="<%= (url_for(image)) %>" class="resize-product">
+      <div class="col-sm-5">
+        <div class="border rounded" style="padding:20px;">
+          <div class = "product-name" >
+            <%= @product.name %>
+          </div>
+          <div>
+            <%= number_to_currency(@product.price, unit: "R$ ", separator: ",", delimiter: ".") %>
+          </div>
+          <div>
+            Categoria: <%= @product.category.category %>
+          </div>
+          <div>
+            Código: <%= @product.code %>
+          </div>
+          <div>
+            Em estoque: <%= @product.stock %>
+          </div>
+          <div style="margin-top:20px;">
+            <%= form_tag line_items_path(product_id: @product) do %>
+              <div class="form-group" style="margin-bottom:10px;">
+                <%= label_tag :quantity, "Quantidade", class: "form-label" %>
+                <button type="button" onclick="decrementNum()" id="decrease_button" class="clean-button">-</button>
+                <%= number_field_tag :quantity, params[:quantity], value: 1, style: "width: 4em;", id: "number_field" %>
+                <button type="button" onclick="incrementNum()" id="increase_button" class="clean-button">+</button>
               </div>
+              <div class="actions"><%= submit_tag "Comprar", class: "btn btn-primary mb-3" %></div>
             <% end %>
           </div>
-        <% end %>
-      </div>
+        </div>
     </div>
     <div class="row">
       <div class="col-sm-6">
         <div class="row">
-            <%= form_tag line_items_path(product_id: @product) do %>
-          <div class="form-group" style="margin-bottom:10px;">
-            <%= label_tag :quantity, "Quantidade", class: "form-label" %>
-            <%= number_field_tag :quantity, params[:quantity], value: 1, class: "form-control", style: "width: 4em;" %>
-          </div>
-            <div class="actions"><%= submit_tag "Comprar", class: "btn btn-primary mb-3" %></div>
-            <% end %>
+          
         </div>
       </div>
       <div class="col-sm-6">
@@ -90,3 +100,20 @@
     </div>
   </div>
 </div>
+
+<script>
+
+  function incrementNum() {
+    var numberField = document.getElementById("number_field")
+    let currentValue = parseInt(numberField.value);
+    numberField.value = currentValue + 1;
+  };
+
+  function decrementNum() {
+    var numberField = document.getElementById("number_field")
+    let currentValue = parseInt(numberField.value);
+    if (currentValue > 1) { 
+      numberField.value = currentValue - 1;
+    }
+  };
+</script>

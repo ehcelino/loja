@@ -64,6 +64,7 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type=number] {
   -moz-appearance: textfield;
+  appearance: textfield;
 }
 
 .carousel-caption {
@@ -78,6 +79,24 @@ input[type=number] {
   font-weight: bold;
 }
 
+.product-name {
+  font-weight: bold;
+  font-size: 40px;
+}
+
+
+.clean-button {
+  border: none;
+  background-color: white;
+  padding: 1px 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 1px;
+  cursor: pointer;
+  border-radius: 5px;
+}
 
 
 /* Tabela do carrinho */
