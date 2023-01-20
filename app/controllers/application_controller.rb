@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   before_action :my_cart
   before_action :destroy_empty_cart
   protect_from_forgery
+  layout :app_layout
 
   def render_404
     render file: "#{Rails.root}/public/404.html", status: 404
@@ -41,6 +42,15 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  # define o layout da aplicação. Se o usuário for o admin o layout será o que está em layouts/admin/base.html.erb
+  # caso contrário será o layouts/application.html.erb.
+  def app_layout
+    if !current_user.nil? && current_user.admin? 
+      return "admin/base" 
+    else
+      return "application"
+    end
+  end
 
 
   # def have_shopping_cart

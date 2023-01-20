@@ -101,33 +101,46 @@
   </div>
 </div>
 
-<script>
+<% content_for :page_script do %>
+  <%= javascript_tag do %>
+  
+    var lastScrollTop = 0;
+    var headerHeight = 140;
 
-var lastScrollTop = 0;
-
-  var headerHeight = 140;
-
-
-  $(window).scroll(function() {
-    var scroll = $(window).scrollTop();
-    var outerHeight = $('#outer').height();
-    var innerHeight = $('#inner').height();
-    if (scroll > lastScrollTop){
-      // Scrolling down
-      if((scroll < outerHeight-innerHeight) && (scroll > 140)){
+    $(window).scroll(function() {
+      var scroll = $(window).scrollTop();
+      var outerHeight = $('#outer').height();
+      var innerHeight = $('#inner').height();
+      if (scroll > lastScrollTop){
+        // Scrolling down
+        if((scroll < outerHeight-innerHeight) && (scroll > headerHeight)){
+            $("#inner").css({
+                top: scroll - headerHeight
+            });
+        }
+      } else {
+        // Scrolling up
+        if (scroll < headerHeight) {
           $("#inner").css({
-              top: scroll - headerHeight
+            top: 0
           });
+        } else if ((scroll > outerHeight-innerHeight) && (scroll > headerHeight)) {
+          pass
+        } else {
+          $("#inner").css({
+            top: scroll - headerHeight
+          });
+        }
       }
-    } else {
-      // Scrolling up
-      $("#inner").css({
-          top: scroll
-      });
-    }
-    lastScrollTop = scroll;
-  });
+      lastScrollTop = scroll;
+    });
 
+  <% end %>
+<% end %>
+
+
+
+<script>
 
   function incrementNum() {
     var numberField = document.getElementById("number_field")
