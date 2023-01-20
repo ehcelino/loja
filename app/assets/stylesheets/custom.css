@@ -99,6 +99,15 @@ input[type=number] {
 }
 
 
+.fixedContainer {
+    background-color:rgb(199, 25, 25);
+    position: fixed;
+    padding: 2em;
+    left: 50%;
+    top: 0%;
+    transform: translateX(-50%);
+}
+
 /* Tabela do carrinho */
 
 

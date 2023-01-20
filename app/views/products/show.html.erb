@@ -46,8 +46,8 @@
         
         <br />
       </div>
-      <div class="col-sm-5">
-        <div class="border rounded" style="padding:20px;">
+      <div class="col-sm-5" id="outer">
+        <div class="border rounded shadow" style="padding:20px; position:relative; background-color:white;" id="inner">
           <div class = "product-name" >
             <%= @product.name %>
           </div>
@@ -102,6 +102,32 @@
 </div>
 
 <script>
+
+var lastScrollTop = 0;
+
+  var headerHeight = 140;
+
+
+  $(window).scroll(function() {
+    var scroll = $(window).scrollTop();
+    var outerHeight = $('#outer').height();
+    var innerHeight = $('#inner').height();
+    if (scroll > lastScrollTop){
+      // Scrolling down
+      if((scroll < outerHeight-innerHeight) && (scroll > 140)){
+          $("#inner").css({
+              top: scroll - headerHeight
+          });
+      }
+    } else {
+      // Scrolling up
+      $("#inner").css({
+          top: scroll
+      });
+    }
+    lastScrollTop = scroll;
+  });
+
 
   function incrementNum() {
     var numberField = document.getElementById("number_field")
