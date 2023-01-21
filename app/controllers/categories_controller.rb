@@ -5,7 +5,7 @@ class CategoriesController < ApplicationController
   end
 
   def promo
-    @products = Product.where(promo: 1)
+    @products = Product.where(promo: 1).where(active: 1)
   end
 
   def new

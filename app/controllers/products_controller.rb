@@ -7,6 +7,10 @@ class ProductsController < ApplicationController
     @product = Product.new
   end
 
+  def index
+    @products = Product.where("keywords LIKE ?", "%#{params[:search]}%").where(active: 1)
+  end
+
   def edit
     @product = Product.find(params[:id])
   end
@@ -54,7 +58,7 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:name, :description, :category_id, :code, :price, :active, :stock, :promo, :content, images: [])
+    params.require(:product).permit(:name, :description, :category_id, :code, :price, :active, :stock, :promo, :content, :keywords, images: [])
   end
 
   def invalid_product

@@ -18,6 +18,10 @@
           <%= f.rich_text_area :content %>
         </div>
         <div class="mb-3">
+          <%= f.label 'Palavras-chave (somente minúsculas)', class: "form-label" %>
+          <%= f.text_field :keywords, placeholder: 'Palavras-chave', class: "form-control" %>
+        </div>
+        <div class="mb-3">
           <%= f.label 'Categoria', class: "form-label" %>
           <div style="margin-bottom:10px;">
             <%= f.collection_select :category_id, Category.all, :id, :category, html_options = {class: "form-select"} %>
@@ -53,6 +57,3 @@
           <%= f.submit "Enviar", class: "btn btn-primary mb-3" %>
         </div>
       <% end %>
-    </div>
-  </div>
-</div>

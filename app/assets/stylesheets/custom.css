@@ -108,6 +108,17 @@ input[type=number] {
     transform: translateX(-50%);
 }
 
+.pers-button {
+  background-color: rgb(11, 94, 215);
+  color: white;
+  border-radius: 3px;
+  border-width: 1px;
+  border-color: #0a58ca;
+}
+
+.search-field {
+  border-color:  rgb(11, 94, 215);
+}
 /* Tabela do carrinho */
 
 

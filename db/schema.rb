@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_17_003319) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_21_014307) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -85,6 +85,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_17_003319) do
     t.integer "active", default: 1
     t.integer "stock"
     t.integer "promo", default: 0
+    t.string "keywords"
     t.index ["category_id"], name: "index_products_on_category_id"
   end
 
@@ -139,6 +140,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_17_003319) do
     t.string "address"
     t.string "city"
     t.string "zip"
+    t.string "password_reset_token"
+    t.datetime "password_reset_sent_at"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
