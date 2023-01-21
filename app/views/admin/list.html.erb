@@ -33,7 +33,11 @@
               <%= product.stock %>
             </td>
             <td>
-              <%= number_to_currency(product.price, unit: "R$ ", separator: ",", delimiter: ".") %>
+              <% if product.promo? %>
+                * <%= number_to_currency(product.promo_price, unit: "R$ ", separator: ",", delimiter: ".") %>
+              <% else %>
+                <%= number_to_currency(product.price, unit: "R$ ", separator: ",", delimiter: ".") %>
+              <% end %>
             </td>
             <td>
               <% if product.active? %>

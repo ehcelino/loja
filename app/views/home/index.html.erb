@@ -75,7 +75,11 @@
                 <div style="height: 80px;">
                   <span><%= product.name %></span><br />
                   <!-- <span><%= product.description %></span><br /> -->
-                  <span><%= number_to_currency(product.price, unit: "R$ ", separator: ",", delimiter: ".") %></span><br />
+                  <% if product.promo? %>
+                    <span><s><%= number_to_currency(product.price, unit: "R$ ", separator: ",", delimiter: ".") %></s> <%= number_to_currency(product.promo_price, unit: "R$ ", separator: ",", delimiter: ".") %></span><br />
+                  <% else %>
+                    <span><%= number_to_currency(product.price, unit: "R$ ", separator: ",", delimiter: ".") %></span><br />
+                  <% end %>
                 </div>
                   <span><%= link_to "Ver produto", product, class: "btn btn-primary mb-3" %></span>
                   <span><%= button_to "Comprar", line_items_path(product_id: product), class: "btn btn-primary mb-3" %></span>

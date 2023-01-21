@@ -91,16 +91,29 @@ class CartsController < ApplicationController
     @sale.save
     @cart.line_items.each do |item|
       @product = Product.find(item.product_id)
-      SaleProduct.create(
-      product_id: item.product_id,
-      quantity: item.quantity, 
-      value: @product.price,
-      name: @product.name,
-      description: @product.description,
-      code: @product.code,
-      promo: @product.promo,
-      sale_id: @sale.id
-      )
+      if @product.promo?
+        SaleProduct.create(
+        product_id: item.product_id,
+        quantity: item.quantity, 
+        value: @product.promo_price,
+        name: @product.name,
+        description: @product.description,
+        code: @product.code,
+        promo: @product.promo,
+        sale_id: @sale.id
+        )
+      else
+        SaleProduct.create(
+        product_id: item.product_id,
+        quantity: item.quantity, 
+        value: @product.price,
+        name: @product.name,
+        description: @product.description,
+        code: @product.code,
+        promo: @product.promo,
+        sale_id: @sale.id
+        )
+      end
       
       @cart.update_quantity(item.product_id, item.quantity)
     end

@@ -3,7 +3,12 @@ class LineItem < ApplicationRecord
   belongs_to :cart
 
   def total_price
-    product.price * quantity
+    if product.promo?
+      result = product.promo_price * quantity
+    else
+      result = product.price * quantity
+    end
+    result
   end
   
 end

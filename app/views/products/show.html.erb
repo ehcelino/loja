@@ -11,18 +11,18 @@
 =end%>
 
   <div class="container border rounded shadow margins p-3">
-    <% if @product.promo? %>
-      <div class="row">
-        <div class="col">
-          <h3>Produto em promoção!</h3>
-        </div>
-      </div>
-    <% end %>
     <div class="row">
       <div class="col-sm-7">
+        <% if @product.promo? %>
+          <% diff = @product.price - @product.promo_price %>
+          <div style="text-align:center;">
+            <h3><strong>Produto em promoção!</strong></h3>
+            <h3><strong>Economia de <%= number_to_currency(diff, unit: "R$ ", separator: ",", delimiter: ".") %>!</strong></h3>
+          </div>
+        <% end %>
         <div>
           <% if @product.images.present? %>
-            <div class="images-outer">
+            <div class="images-outer" style="text-align:center;">
               <% @product.images.each do |image| %>
                 <div class="images-inner">
                   <img src="<%= (url_for(image)) %>" class="resize-product">
@@ -48,11 +48,20 @@
       </div>
       <div class="col-sm-5" id="outer">
         <div class="border rounded shadow" style="padding:20px; position:relative; background-color:white;" id="inner">
+          <% if @product.promo? %>
+            <div style="position: absolute; top: 10px; right: 10px;">
+              <%= image_tag "promo.png", class: "resize-promo" %>
+            </div>
+          <% end %>
           <div class = "product-name" >
             <%= @product.name %>
           </div>
           <div>
-            <%= number_to_currency(@product.price, unit: "R$ ", separator: ",", delimiter: ".") %>
+            <% if @product.promo? %>
+              De <s><%= number_to_currency(@product.price, unit: "R$ ", separator: ",", delimiter: ".") %></s> Por <%= number_to_currency(@product.promo_price, unit: "R$ ", separator: ",", delimiter: ".") %>
+            <% else %>
+              <%= number_to_currency(@product.price, unit: "R$ ", separator: ",", delimiter: ".") %>
+            <% end %>
           </div>
           <div>
             Categoria: <%= @product.category.category %>

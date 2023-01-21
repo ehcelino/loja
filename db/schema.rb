@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_21_014307) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_21_040134) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -86,6 +86,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_21_014307) do
     t.integer "stock"
     t.integer "promo", default: 0
     t.string "keywords"
+    t.decimal "promo_price", precision: 10, scale: 2
     t.index ["category_id"], name: "index_products_on_category_id"
   end
 
