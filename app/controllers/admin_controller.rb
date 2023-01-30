@@ -8,7 +8,7 @@ class AdminController < ApplicationController
   end
 
   def sales
-    @sales = Sale.all
+    @sales = Sale.order(created_at: :desc)
   end
 
   private

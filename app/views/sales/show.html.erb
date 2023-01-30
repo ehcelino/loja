@@ -9,6 +9,9 @@
       <h3>Venda n°: <%= @sale.number %></h3>
     </div>
     <div>
+      <h3><%= @sale.created_at.to_formatted_s(:custom_datetime) %></h3>
+    </div>
+    <div>
       <% if @sale.fullname? %>
         Cliente: <%= @sale.fullname %>
       <% else %>

@@ -25,5 +25,12 @@ module Loja
     # teste para suprimir o erro do webconsole ativando-o na rede toda
     # config.web_console.whitelisted_ips = '192.168.0.0/16'
     # deu pau no render
+
+    # configurando data e hora
+
+    config.time_zone = 'Buenos Aires'
+    #config.active_record.default_timezone = :local
+    Time::DATE_FORMATS[:custom_datetime] = "%d/%m/%Y %H:%M"
+    Time::DATE_FORMATS[:custom_date] = "%d/%m/%Y"
   end
 end
